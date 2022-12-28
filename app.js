@@ -1,9 +1,9 @@
 'use strict';
 
-const TOTALPRODUCTS = 3;
+const totalProducts = 3;
 
 
-const TOTALROUNDS = 25;
+const totalRounds = 25;
 let round = 0;
 
 function Product(name, src) {
@@ -23,7 +23,7 @@ const currentProductArrayIndicesKey = 'current-product-indices';
 const resultsButton = document.getElementById('resultsButton');
 const resetButton = document.getElementById('resetButton');
 
-const REPEATER = productsArray.length / 2 >= PRODUCTNUMBER ? true : false;
+const repeater = productsArray.length / 2 >= productNumber ? true : false;
 
 const productArrayIndices = {};
 
@@ -39,13 +39,13 @@ function pageLoad() {
     defineProductIndices();
     createInitialProducts();
 
-    if (round < TOTALROUNDS) {
+    if (round < totalRounds) {
         for (let img of document.getElementsByClassName('productImage')) {
-            img.addEventListener('click', handleProductClick);
+            img.addEventListener('click', handleproductClick);
         }
     } else {
 
-        document.getElementById('resultsButton').style.border = '0.25rem solid #c7a46e';
+        document.getElementById('resultsButton').style.border = '0.50rem solid #eed6d3';
     }
     resultsButton.addEventListener('click', viewResults);
     resetButton.addEventListener('click', resetSurvey);
@@ -104,11 +104,11 @@ function defineProductIndices() {
 }
 
 
-function createFirstProducts() {
+function createFirstProduct() {
 
     const container = document.getElementById('productDisplaySection');
     const fragment = document.createDocumentFragment();
-    for (let i = 0; i < PRODUCTNUMBER; i++) {
+    for (let i = 0; i < productNumber; i++) {
         let imgElement = document.createElement('img');
         imgElement.className = 'productImage';
         fragment.appendChild(imgElement);
@@ -123,11 +123,11 @@ function createFirstProducts() {
 }
 
 
-function renderProducts() {
+function renderProduct() {
 
     let newProductArrayIndices = [];
     const imgArray = document.getElementsByClassName('productImage');
-    for (let i = 0; i < PRODUCTNUMBER; i++) {
+    for (let i = 0; i < productNumber; i++) {
         let randomIndex = getRandomIndex();
 
         if (REPEATER) {
@@ -187,9 +187,9 @@ function ProductClickHandler(event) {
     setLocalStorage(productsArrayKey, productsArray);
     setLocalStorage(roundKey, round);
 
-    if (round === TOTALROUNDS) {
+    if (round === totalRounds) {
 
-        document.getElementById('resultsButton').style.border = '0.50rem solid #c7a46e';
+        document.getElementById('resultsButton').style.border = '0.50rem solid #eed6d3';
         for (let img of document.getElementsByClassName('productImage')) {
             img.removeEventListener('click', ProductClickHandler);
         }
@@ -218,7 +218,7 @@ function viewResults() {
     ul.replaceChildren(fragment);
 
 
-    if (round === TOTAL_ROUNDS) {
+    if (round === totalRounds) {
 
         createResultsChart();
         resultsButton.removeEventListener('click', viewResults);
