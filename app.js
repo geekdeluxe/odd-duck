@@ -57,11 +57,12 @@ function defineProducts() {
         productsArray = getLocalStorage(productsArrayKey);
     } else {
         productsArray = [
-            new Product('breakfast', './img/breakfast.jpg'),
-            new Product('scissors', './img/scissors.jpg'),
-            new Product('unicorn', './img/unicorn.jpg'),
+            new Product('breakfast', './img/breakfast.jpeg'),
+            new Product('scissors', './img/scissors.jpeg'),
+            new Product('unicorn', './img/unicorn.jpeg'),
         ];
         setLocalStorage(productsArrayKey, productsArray);
+        console.log(productsArray)
     }
 }
 
